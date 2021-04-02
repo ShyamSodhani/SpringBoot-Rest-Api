@@ -35,6 +35,9 @@ import com.example.TestingKeycloak.dto.UserDTO;
 
 
 
+
+
+
 @RequestMapping(value = "/users")
 @RestController
 public class UserController {
@@ -152,6 +155,12 @@ public class UserController {
     @RequestMapping(value = "/all-user", method = RequestMethod.GET)
     public ResponseEntity<String> getAllUser(@RequestHeader String Authorization) {
         return ResponseEntity.ok("Hello All User");
+    }
+    
+    @GetMapping(path="/hello")
+    public String hello() 
+    {
+        return "Hello without authentication";
     }
 
 }
