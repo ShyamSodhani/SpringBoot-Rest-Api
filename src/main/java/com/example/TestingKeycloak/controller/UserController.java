@@ -23,6 +23,7 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,16 +41,17 @@ import com.example.TestingKeycloak.dto.UserDTO;
 
 @RequestMapping(value = "/users")
 @RestController
+@CrossOrigin
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-    private String authServerUrl = "https://keycloakserver3.azurewebsites.net/auth";
+    private String authServerUrl = "http://localhost:8080/auth";
     private String realm = "Testing";
     private String clientId = "nodejs-microservice";
     private String role = "user";
     //Get client secret from the Keycloak admin console (in the credential tab)
-    private String clientSecret = "5b37a114-eab1-4c15-9c67-c821b22b85ce";
+    private String clientSecret = "3725fa35-3fe5-46a6-aec8-65e5e41da9e2";
 
     @PostMapping(path = "/create")
     public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
